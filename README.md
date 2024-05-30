@@ -8,6 +8,12 @@ This repository implements an idea by [@lucasrodcosta](https://github.com/lucasr
 
 If a request comes at time `t` the cache will be valid for `t + cache_time`.
 
+## Why?
+
+In low latency video streaming, some objects like variant manifests get updated in milliseconds, under 500ms. This might be a problem because NGINX does not allow you to set a cache time less than one second.
+
+In scenarios with high load, even a small cache like 250ms will make a huge difference because you don't want to stress your backend with so many requests.
+
 ## Running
 
 ```sh
